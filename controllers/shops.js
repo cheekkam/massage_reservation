@@ -77,21 +77,3 @@ exports.getShop=async (req,res,next)=>{
         res.status(400).json({success:false});
     }
 };
-
-//@desc     Update Shop
-//@route    PUT /api/v1/Shops/:id
-//@access   Private
-exports.updateShop= async (req,res,next)=>{
-    try{
-        const shop = await Shop.findByIdAndUpdate(req.params.id, req.body, {
-            new:true,
-            runValidators:true
-        });
-        if(!shop) {
-            return res.status(400).json({success:false});
-        }
-        res.status(200).json({success:true, data:shop});
-    } catch(err) {
-        res.status(400).json({success:false});
-    }
-};

@@ -1,5 +1,5 @@
 const express = require('express');
-const {getShops, getShop, updateShop} = require('../controllers/shops');
+const {getShops, getShop} = require('../controllers/shops');
 const {protect} = require('../middleware/auth')
 
 // Include other resource routers
@@ -11,6 +11,6 @@ const router = express.Router();
 router.use('/:shopId/appointment/', appointmentRouter); 
 
 router.route('/').get(getShops);
-router.route('/:id').get(getShop).put(protect, updateShop);
+router.route('/:id').get(getShop)
 
 module.exports=router;
